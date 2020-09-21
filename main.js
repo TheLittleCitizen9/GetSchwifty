@@ -1,6 +1,14 @@
-createTable()
+main()
 var board = []
 var myTableArray = []
+
+
+function main(){
+    createTable()
+    if(!isGameSolvable()){
+        createTable()
+    }
+}
 
 function createCube(num, cubesInRow){
     if(num !== 0){
@@ -122,7 +130,6 @@ function generateTable(tableData) {
       var row = document.createElement('tr');
   
       rowData.forEach(function(cellData) {
-        //var cell = document.createElement('td');
         var td = "<td class='cube' onclick=cubePressed(this)><div>"+cellData+"</div></td>"
         row.innerHTML += td
       });
@@ -169,5 +176,40 @@ function cubePressed(element){
     }
     document.getElementById('all-cubes').innerHTML = ""
     generateTable(myTableArray)
-    console.log("hi")
+    if(checkWinner()){
+        document.getElementById("win").innerHTML = "You Won !!!"
+    }
+}
+
+function checkWinner(){
+    for(var i=0; i<myTableArray.length; i++){
+        for(var j=0; j<myTableArray[i].length; j++){
+            if(myTableArray[i][j] +1 !== myTableArray[i][j+1]){
+                return false
+            }
+        }
+    }
+    return true
+}
+
+function isGameSolvable(){
+    var count = 0
+    var j = 0
+    for(var i=0; i<myTableArray.length; i++){
+        var num = myTableArray[i][i]
+        if(num > myTableArray[i][j]){
+            count++
+        }
+        if(j === 3){
+            j = j-3 
+        }else{
+           j++
+        }
+        
+    }
+    if(count % 2 === 0){
+        return true
+    }else{
+        return false
+    }
 }
