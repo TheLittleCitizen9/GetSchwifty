@@ -1,0 +1,35 @@
+.btn{
+    background-color: darkcyan;
+    color: white;
+}
+
+.btn:hover{
+    background-color: cadetblue;
+}
+
+
+div {
+    display: block;
+}
+
+td{
+    display: table-cell;
+    vertical-align: inherit;
+}
+
+.search-container{
+    text-align: right;
+}
+.row{
+    text-align: center;
+    align-items: center;
+}
+
+.num{
+   font-size: larger;
+}
+
+#all-cubes{
+    text-align: center;
+    font-size: xx-large;
+}
