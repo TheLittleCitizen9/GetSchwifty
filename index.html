@@ -13,12 +13,12 @@
   <body>
       <div class="container">
         <div class="row top-buffer my-2">
-            <div class="col-3">
+            <div class="col-2">
               <div class="search-container">
                   <input class="form-control" type="text" id="cubeNum" name="search" placeholder="Number of tiles">
               </div>
             </div>
-            <div class="col-3">
+            <div class="col-2">
               <div class="search-container">
                 <input class="form-control" type="text" id="userName" name="search" placeholder="Enter name">
               </div>
@@ -33,6 +33,9 @@
             </div>
             <div class="col-2 text-center">
               <button class='btn btn-send btn-md' id="winGame" onclick="automaticWin()" disabled>Win Game</button>
+            </div>
+            <div class="col-2 text-center">
+              <button class='btn btn-send btn-md' id="restart" onclick="restartGame()">Restart Game</button>
             </div>
       </div>
       <div class="row top-buffer my-2">

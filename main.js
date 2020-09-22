@@ -128,6 +128,11 @@ function automaticWin(){
     saveGame()
     if(checkWinner()){
         document.getElementById("win").innerHTML = "You Won !!!"
-        //document.getElementById('all-cubes').innerHTML = ""
     }
+}
+
+function restartGame(){
+    localStorage.removeItem('schwifty')
+    localStorage.removeItem('name')
+    window.location.reload()
 }
