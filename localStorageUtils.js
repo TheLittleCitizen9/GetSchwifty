@@ -30,7 +30,8 @@ const getUsers = function(){
 }
 
 const saveUsers = function(){
-    localStorage.setItem('users', JSON.stringify(users))
+    users.sort((a,b) => a.gameLength-b.gameLength)
+    localStorage.setItem('users', JSON.stringify(users.slice(0, 5)))
 }
 
 const saveName = function(name){

@@ -4,15 +4,9 @@ function enterUser(){
     var rank = rankInputBox.value
     var name = nameInputBox.value
     saveName(name)
-    if(users.length === 0 || users.length < 5){
-        var newUser = new User(name, cubesNum, rank)
-        users.push(newUser)
-    }else{
-        var newUser = new User(name, cubesNum, rank)
-        users.splice(0,1)
-        users.push(newUser)
-    }
-    saveUsers()
+    var newUser = new User(name, cubesNum, rank)
+    users.push(newUser)
+    //saveUsers()
 }
 
 function automaticWin(){
