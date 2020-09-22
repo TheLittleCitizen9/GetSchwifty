@@ -4,7 +4,6 @@ function cubePressed(element){
     var value = element.innerText
     for(var i=0; i<myTableArray.length; i++){
         for(var j=0; j<myTableArray[i].length; j++){
-            var c = myTableArray[i][j]
             if(myTableArray[i][j] === value){
                 if(myTableArray[i][j-1] === ""){
                     var temp = myTableArray[i][j]
@@ -34,6 +33,7 @@ function cubePressed(element){
             break
         }
     }
+    saveGame()
     document.getElementById('all-cubes').innerHTML = ""
     generateTable(myTableArray)
     if(checkWinner()){
@@ -59,6 +59,9 @@ function checkWinner(){
                 }
             }
         }
+    }
+    if(isWinner){
+        localStorage.removeItem('schwifty')
     }
     return isWinner
 }

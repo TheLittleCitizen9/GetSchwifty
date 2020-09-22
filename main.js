@@ -4,17 +4,21 @@ const saveGame = function(){
 
 const getBoardGame = function(){
   const boardJSON = localStorage.getItem('schwifty')
-  if(boardJSON !== "null"){
+  if(boardJSON !== null){
       return JSON.parse(boardJSON)
   }else{
       return []
   }
 }
 
+window.onload = () => {
+    if(myTableArray.length > 0){
+        generateTable(myTableArray)
+    }
+}
 
 var myTableArray = getBoardGame()
 var cubesNum = 0
-
 
 function main(){
     createTable()
@@ -25,6 +29,8 @@ function main(){
 }
 
 function createTable(){
+    //need to check if the local storage contains a board - if it is, generate the ui from it
+    // if not - generate new ui from input
     var inputBox = document.getElementById("cubeNum")
     cubesNum = parseInt(inputBox.value)
     
