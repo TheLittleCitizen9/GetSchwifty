@@ -20,6 +20,15 @@ const getBoardGame = function(){
   }
 }
 
+const getName = function(){
+    const boardJSON = localStorage.getItem('name')
+    if(boardJSON !== null){
+        return JSON.parse(boardJSON)
+    }else{
+        return ""
+    }
+}
+
 const getUsers = function(){
     const boardJSON = localStorage.getItem('users')
     if(boardJSON !== null){
@@ -122,9 +131,15 @@ const saveUsers = function(){
     localStorage.setItem('users', JSON.stringify(users))
 }
 
+const saveName = function(name){
+    localStorage.setItem('name', JSON.stringify(name))
+}
+
 function enterUser(){
     var inputBox = document.getElementById("userName")
     var name = inputBox.value
+    saveName(name)
+    inputBox.placeHolder = getName()
     if(users.length === 0 || users.length < 5){
         var newUser = new User(name, cubesNum)
         users.push(newUser)

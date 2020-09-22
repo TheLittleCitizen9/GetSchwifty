@@ -43,6 +43,7 @@ function cubePressed(element){
 }
 
 function checkWinner(){
+    
     var lastNum = 0
     isWinner = false
     if(myTableArray[myTableArray.length-1][myTableArray.length-1] === ""){
@@ -61,7 +62,21 @@ function checkWinner(){
         }
     }
     if(isWinner){
+        var user = getUser(getName())
+        const diffTime = Math.abs(user.startDate - new Date());
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+        user.gameLength = diffDays
+        saveUsers()
         localStorage.removeItem('schwifty')
+        localStorage.removeItem('name')
     }
     return isWinner
+}
+
+function getUser(userName){
+    for(var i=0; i< users.length; i++){
+        if(users[i].name === userName){
+            return users[i]
+        }
+    }
 }
