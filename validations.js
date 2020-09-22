@@ -1,0 +1,64 @@
+function cubePressed(element){
+    var finished = false
+    getTableValues()
+    var value = element.innerText
+    for(var i=0; i<myTableArray.length; i++){
+        for(var j=0; j<myTableArray[i].length; j++){
+            var c = myTableArray[i][j]
+            if(myTableArray[i][j] === value){
+                if(myTableArray[i][j-1] === ""){
+                    var temp = myTableArray[i][j]
+                    myTableArray[i][j] = ""
+                    myTableArray[i][j-1] = temp
+                    finished = true
+                }else if(myTableArray[i][j+1] === ""){
+                    var temp = myTableArray[i][j]
+                    myTableArray[i][j] = ""
+                    myTableArray[i][j+1] = temp
+                    finished = true
+                }else if(i>=1 && myTableArray[i-1][j] === ""){
+                    var temp = myTableArray[i][j]
+                    myTableArray[i][j] = ""
+                    myTableArray[i-1][j] = temp
+                    finished = true
+                }else if (myTableArray[i+1][j] === ""){
+                    var temp = myTableArray[i][j]
+                    myTableArray[i][j] = ""
+                    myTableArray[i+1][j] = temp
+                    finished = true
+                }
+                break
+            }
+        }
+        if(finished){
+            break
+        }
+    }
+    document.getElementById('all-cubes').innerHTML = ""
+    generateTable(myTableArray)
+    if(checkWinner()){
+        document.getElementById("win").innerHTML = "You Won !!!"
+        document.getElementById('all-cubes').innerHTML = ""
+    }
+}
+
+function checkWinner(){
+    var lastNum = 0
+    isWinner = false
+    if(myTableArray[myTableArray.length-1][myTableArray.length-1] === ""){
+        for(var i=0; i<myTableArray.length; i++){
+            for(var j=0; j<myTableArray[i].length; j++){
+                lastNum = parseInt(myTableArray[i][j])
+                if(j !== myTableArray.length-1){
+                    if(lastNum +1 !== parseInt(myTableArray[i][j+1]) && myTableArray[i][j+1] !== ""){
+                        isWinner = false
+                    }
+                    else{
+                        isWinner = true
+                    }
+                }
+            }
+        }
+    }
+    return isWinner
+}
