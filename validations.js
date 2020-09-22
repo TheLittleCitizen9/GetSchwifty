@@ -34,11 +34,11 @@ function cubePressed(element){
         }
     }
     saveGame()
-    document.getElementById('all-cubes').innerHTML = ""
+    
     generateTable(myTableArray)
     if(checkWinner()){
         document.getElementById("win").innerHTML = "You Won !!!"
-        document.getElementById('all-cubes').innerHTML = ""
+        //document.getElementById('all-cubes').innerHTML = ""
     }
 }
 

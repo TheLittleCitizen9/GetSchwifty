@@ -1,6 +1,8 @@
 .btn{
-    background-color: darkcyan;
+    background-color: rgb(144, 219, 144);
     color: white;
+    text-shadow: 0 0 3px black;
+    font-weight: bolder;
 }
 
 .btn:hover{
@@ -20,6 +22,12 @@ td{
 .search-container{
     text-align: right;
 }
+
+input[type="text"], textarea {
+    background-color : rgb(188, 235, 188);
+    height: 50px;
+}
+
 .row{
     text-align: center;
     align-items: center;
@@ -36,6 +44,7 @@ td{
 
 table {
     width: 100%;
+    border: 3px solid rgb(197, 125, 209)
 }
 
 tr {
@@ -44,9 +53,11 @@ color: black;
 }
 
 tr, td {
-padding: 15px;
-text-align: center;
-background-color: white;
+    border:3px solid black;
+    padding: 15px;
+    text-align: center;
+    background-color: white;
+    font-weight: bolder;
 }
 
 #win{
@@ -54,6 +65,7 @@ background-color: white;
     text-align: left;
     font-weight: bolder;
     color: white;
+    text-shadow: 0 0 3px black;
 }
 
 body{
