@@ -1,3 +1,12 @@
+class User{
+    constructor(name, size){
+        this.name = name
+        this.startDate = new Date();
+        this.gameLength = null
+        this.boardSize = size
+    }
+}
+
 const saveGame = function(){
     localStorage.setItem('schwifty', JSON.stringify(myTableArray))
 }
@@ -11,12 +20,22 @@ const getBoardGame = function(){
   }
 }
 
+const getUsers = function(){
+    const boardJSON = localStorage.getItem('users')
+    if(boardJSON !== null){
+        return JSON.parse(boardJSON)
+    }else{
+        return []
+    }
+  }
+
 window.onload = () => {
     if(myTableArray.length > 0){
         generateTable(myTableArray)
     }
 }
 
+var users = getUsers()
 var myTableArray = getBoardGame()
 var cubesNum = 0
 
@@ -26,14 +45,13 @@ function main(){
         document.getElementById('all-cubes').innerHTML = ""
         createTable()
     }
+    enterUser()
 }
 
 function createTable(){
-    //need to check if the local storage contains a board - if it is, generate the ui from it
-    // if not - generate new ui from input
     var inputBox = document.getElementById("cubeNum")
     cubesNum = parseInt(inputBox.value)
-    
+
     var myTable = document.getElementById('all-cubes');
     var count = cubesNum
     var array = shuffle(cubesNum**2)
@@ -100,4 +118,20 @@ function generateTable(tableData) {
     });
   }
 
-  
+const saveUsers = function(){
+    localStorage.setItem('users', JSON.stringify(users))
+}
+
+function enterUser(){
+    var inputBox = document.getElementById("userName")
+    var name = inputBox.value
+    if(users.length === 0 || users.length < 5){
+        var newUser = new User(name, cubesNum)
+        users.push(newUser)
+    }else{
+        var newUser = new User(name, cubesNum)
+        users.splice(0,1)
+        users.push(newUser)
+    }
+    saveUsers()
+}
