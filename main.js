@@ -1,6 +1,5 @@
-var board = []
 var myTableArray = []
-var cubesNum = 3
+var cubesNum = 0
 
 
 function main(){
@@ -10,48 +9,6 @@ function main(){
         createTable()
     }
 }
-
-// function createCube(num, cubesInRow){
-//     if(num !== 0){
-//         var cubeElement = "<div class='col-md-" + cubesInRow + "' border rounded mx-2' id='" +num+"' onclick=cubePressed()>"
-//         cubeElement += "<div class='row'>"
-//         cubeElement += " <div class='num'>" + num + "</div></div>"
-//         cubeElement += "</div>"
-//     }else{
-//         var cubeElement = "<div class='col-md-" + cubesInRow + "' border rounded mx-2' id='" +num+"' onclick=cubePressed()>"
-//         cubeElement += "<div class='row'>"
-//         cubeElement += " <div class='num'></div></div>"
-//         cubeElement += "</div>"
-//     }
-//     document.getElementById("cubes").innerHTML += cubeElement
-// }
-
-// function createBoard(){
-    
-//     var inputBox = document.getElementById("cubeNum")
-//     var num = inputBox.value
-//     var a = parseInt(num)
-//     var array = shuffle(a**2)
-//     var b = a+1
-//     var element = "<div class='col-"+b+"'><div class='row' id='cubes'></div></div>"
-//     document.getElementById("all-cubes").innerHTML = element
-//     inputBox.disabled = true
-    
-//     for(var i=0; i<array.length; i++){
-//         createCube(array[i], a)
-//     }
-// }
-
-// function createBoard(){
-//     var array = shuffle(cubesNum**2)
-//     var element = "<div class='col-"+(cubesNum+1)+"'><div class='row' id='cubes'></div></div>"
-//     document.getElementById("all-cubes").innerHTML = element
-    
-    
-//     for(var i=0; i<array.length; i++){
-//         createCube(array[i], cubesNum)
-//     }
-// }
 
 function createTable(){
     var inputBox = document.getElementById("cubeNum")
@@ -78,12 +35,6 @@ function createTable(){
     myTable.appendChild(tr);
     }
     getTableValues()
-}
-
-function boardArray(num){
-    for(var i=0; i<num; i++) {
-        board[i] = new Array(num);
-    }
 }
 
 function shuffle(num) {
@@ -168,6 +119,7 @@ function cubePressed(element){
     generateTable(myTableArray)
     if(checkWinner()){
         document.getElementById("win").innerHTML = "You Won !!!"
+        document.getElementById('all-cubes').innerHTML = ""
     }
 }
 
@@ -185,104 +137,4 @@ function checkWinner(){
         }
     }
     return true
-}
-
-function isGameSolvable(){
-    if(cubesNum % 2 !== 0){
-        return isGameSolvableOddBoard()
-    }else{
-        return isGameSolvableEvenBoard()
-    }
-}
-
-function isGameSolvableOddBoard(){
-    var x = 0
-    var count = 0
-    var y = 0
-     while(x < myTableArray.length && y < myTableArray.length){
-        if(myTableArray[x][y] !== ""){
-            var num = parseInt(myTableArray[x][y])
-            for(var i=x; i<myTableArray.length; i++){
-                for(var j=0; j<myTableArray.length; j++){
-                    if(x === i){
-                        if(j >= y){
-                            var a = parseInt(myTableArray[i][j])
-                            if(num > a && myTableArray[i][j]!==""){
-                                count++
-                            }
-                        }
-                    }else{
-                        var a = parseInt(myTableArray[i][j])
-                            if(num > a && myTableArray[i][j]!==""){
-                                count++
-                            }
-                            if(myTableArray[i][j] === ""){
-                                rowNum = i + 1
-                            }
-                    }
-                }
-            }
-        }
-        y++
-        if(y == myTableArray.length && x < myTableArray.length){
-            x++
-            y = 0
-        }
-     }
-
-     if(count % 2 === 0){
-         console.log("solvable for odd number")
-        return true
-    }else{
-        console.log("unsolvable for odd number")
-        return false
-    }
-}
-
-function isGameSolvableEvenBoard(){
-    var x = 0
-    var count = 0
-    var y = 0
-    var rowNum = 0
-     while(x < myTableArray.length && y < myTableArray.length){
-        if(myTableArray[x][y] !== ""){
-            var num = parseInt(myTableArray[x][y])
-            for(var i=x; i<myTableArray.length; i++){
-                for(var j=0; j<myTableArray.length; j++){
-                    if(x == i){
-                        if(j >= y){
-                            var a = parseInt(myTableArray[i][j])
-                            if(num > a && myTableArray[i][j]!==""){
-                                count++
-                            }
-                            if(myTableArray[i][j] === ""){
-                                rowNum = i + 1
-                            }
-                        }
-                    }else{
-                        var a = parseInt(myTableArray[i][j])
-                            if(num > a && myTableArray[i][j]!==""){
-                                count++
-                            }
-                            if(myTableArray[i][j] === ""){
-                                rowNum = i + 1
-                            }
-                    }
-                }
-            }
-        }
-        y++
-        if(y == myTableArray.length && x < myTableArray.length){
-            x++
-            y = 0
-        }
-     }
-      count = count + rowNum
-     if(count % 2 === 0){
-        console.log("solvable for even number")
-        return true
-    }else{
-        console.log("unsolvable for even number")
-        return false
-    }
 }

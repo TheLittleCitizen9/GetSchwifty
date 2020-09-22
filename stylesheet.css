@@ -40,16 +40,25 @@ table {
 
 tr {
 height: 50px;
+color: black;
 }
 
 tr, td {
 padding: 15px;
 text-align: center;
+background-color: white;
 }
 
 #win{
-    font-size: 100px;
-    text-align: center;
+    font-size: 150px;
+    text-align: left;
     font-weight: bolder;
-    color: cornflowerblue;
+    color: white;
+}
+
+body{
+    background-image: url('rick-and-morty-walpaper-1.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
 }
