@@ -1,4 +1,18 @@
-var myTableArray = []
+const saveGame = function(){
+    localStorage.setItem('schwifty', JSON.stringify(myTableArray))
+}
+
+const getBoardGame = function(){
+  const boardJSON = localStorage.getItem('schwifty')
+  if(boardJSON !== "null"){
+      return JSON.parse(boardJSON)
+  }else{
+      return []
+  }
+}
+
+
+var myTableArray = getBoardGame()
 var cubesNum = 0
 
 
@@ -63,6 +77,7 @@ function getTableValues(){
             myTableArray.push(arrayOfThisRow);
         }
     }
+    saveGame()
 }
 
 function generateTable(tableData) {
@@ -78,3 +93,5 @@ function generateTable(tableData) {
       table.appendChild(row)
     });
   }
+
+  
