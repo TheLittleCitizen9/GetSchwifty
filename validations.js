@@ -64,7 +64,7 @@ function checkWinner(){
     if(isWinner){
         var user = getUser(getName())
         const diffTime = Math.abs(user.startDate - new Date());
-        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+        const diffDays = diffTime / 36e5;
         user.gameLength = diffDays
         saveUsers()
         localStorage.removeItem('schwifty')

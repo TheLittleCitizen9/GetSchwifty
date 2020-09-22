@@ -1,43 +1,3 @@
-class User{
-    constructor(name, size){
-        this.name = name
-        this.startDate = new Date();
-        this.gameLength = null
-        this.boardSize = size
-    }
-}
-
-const saveGame = function(){
-    localStorage.setItem('schwifty', JSON.stringify(myTableArray))
-}
-
-const getBoardGame = function(){
-  const boardJSON = localStorage.getItem('schwifty')
-  if(boardJSON !== null){
-      return JSON.parse(boardJSON)
-  }else{
-      return []
-  }
-}
-
-const getName = function(){
-    const boardJSON = localStorage.getItem('name')
-    if(boardJSON !== null){
-        return JSON.parse(boardJSON)
-    }else{
-        return ""
-    }
-}
-
-const getUsers = function(){
-    const boardJSON = localStorage.getItem('users')
-    if(boardJSON !== null){
-        return JSON.parse(boardJSON)
-    }else{
-        return []
-    }
-  }
-
 window.onload = () => {
     if(myTableArray.length > 0){
         generateTable(myTableArray)
@@ -127,24 +87,17 @@ function generateTable(tableData) {
     });
   }
 
-const saveUsers = function(){
-    localStorage.setItem('users', JSON.stringify(users))
-}
-
-const saveName = function(name){
-    localStorage.setItem('name', JSON.stringify(name))
-}
-
 function enterUser(){
-    var inputBox = document.getElementById("userName")
-    var name = inputBox.value
+    var nameInputBox = document.getElementById("userName")
+    var rankInputBox = document.getElementById("rank")
+    var rank = rankInputBox.value
+    var name = nameInputBox.value
     saveName(name)
-    inputBox.placeHolder = getName()
     if(users.length === 0 || users.length < 5){
-        var newUser = new User(name, cubesNum)
+        var newUser = new User(name, cubesNum, rank)
         users.push(newUser)
     }else{
-        var newUser = new User(name, cubesNum)
+        var newUser = new User(name, cubesNum, rank)
         users.splice(0,1)
         users.push(newUser)
     }
