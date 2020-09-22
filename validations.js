@@ -51,7 +51,7 @@ function checkWinner(){
                 lastNum = parseInt(myTableArray[i][j])
                 if(j !== myTableArray.length-1){
                     if(lastNum +1 !== parseInt(myTableArray[i][j+1]) && myTableArray[i][j+1] !== ""){
-                        isWinner = false
+                        return false
                     }
                     else{
                         isWinner = true
