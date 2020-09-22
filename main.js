@@ -22,8 +22,6 @@ function createCube(num, cubesInRow){
         cubeElement += " <div class='num'></div></div>"
         cubeElement += "</div>"
     }
-    
-
     document.getElementById("cubes").innerHTML += cubeElement
 }
 
@@ -44,20 +42,20 @@ function createCube(num, cubesInRow){
 // }
 
 function createBoard(){
-    var array = shuffle(3**2)
-    var element = "<div class='col-"+4+"'><div class='row' id='cubes'></div></div>"
+    var array = shuffle(2**2)
+    var element = "<div class='col-"+3+"'><div class='row' id='cubes'></div></div>"
     document.getElementById("all-cubes").innerHTML = element
     
     
     for(var i=0; i<array.length; i++){
-        createCube(array[i], 3)
+        createCube(array[i], 2)
     }
 }
 
 function createTable(){
     var myTable = document.getElementById('all-cubes');
-    var count = 3
-    var array = shuffle(3**2)
+    var count = 2
+    var array = shuffle(2**2)
     var num = 0
     for(var i=0;i<count;i++){
         var tr = document.createElement('tr');
@@ -182,11 +180,16 @@ function cubePressed(element){
 }
 
 function checkWinner(){
+    var lastNum = 0
     for(var i=0; i<myTableArray.length; i++){
         for(var j=0; j<myTableArray[i].length; j++){
-            if(myTableArray[i][j] +1 !== myTableArray[i][j+1]){
-                return false
+            lastNum = parseInt(myTableArray[i][j])
+            if(j != myTableArray.length-1){
+                if(lastNum +1 !== parseInt(myTableArray[i][j+1]) && myTableArray[i][j+1] !== ""){
+                    return false
+                }
             }
+            
         }
     }
     return true
