@@ -1,29 +1,32 @@
-main()
 var board = []
 var myTableArray = []
+var cubesNum = 3
+
+main()
 
 
 function main(){
     createTable()
-    if(!isGameSolvable()){
+    while(!isGameSolvable()){
+        document.getElementById('all-cubes').innerHTML = ""
         createTable()
     }
 }
 
-function createCube(num, cubesInRow){
-    if(num !== 0){
-        var cubeElement = "<div class='col-md-" + cubesInRow + "' border rounded mx-2' id='" +num+"' onclick=cubePressed()>"
-        cubeElement += "<div class='row'>"
-        cubeElement += " <div class='num'>" + num + "</div></div>"
-        cubeElement += "</div>"
-    }else{
-        var cubeElement = "<div class='col-md-" + cubesInRow + "' border rounded mx-2' id='" +num+"' onclick=cubePressed()>"
-        cubeElement += "<div class='row'>"
-        cubeElement += " <div class='num'></div></div>"
-        cubeElement += "</div>"
-    }
-    document.getElementById("cubes").innerHTML += cubeElement
-}
+// function createCube(num, cubesInRow){
+//     if(num !== 0){
+//         var cubeElement = "<div class='col-md-" + cubesInRow + "' border rounded mx-2' id='" +num+"' onclick=cubePressed()>"
+//         cubeElement += "<div class='row'>"
+//         cubeElement += " <div class='num'>" + num + "</div></div>"
+//         cubeElement += "</div>"
+//     }else{
+//         var cubeElement = "<div class='col-md-" + cubesInRow + "' border rounded mx-2' id='" +num+"' onclick=cubePressed()>"
+//         cubeElement += "<div class='row'>"
+//         cubeElement += " <div class='num'></div></div>"
+//         cubeElement += "</div>"
+//     }
+//     document.getElementById("cubes").innerHTML += cubeElement
+// }
 
 // function createBoard(){
     
@@ -41,21 +44,24 @@ function createCube(num, cubesInRow){
 //     }
 // }
 
-function createBoard(){
-    var array = shuffle(2**2)
-    var element = "<div class='col-"+3+"'><div class='row' id='cubes'></div></div>"
-    document.getElementById("all-cubes").innerHTML = element
+// function createBoard(){
+//     var array = shuffle(cubesNum**2)
+//     var element = "<div class='col-"+(cubesNum+1)+"'><div class='row' id='cubes'></div></div>"
+//     document.getElementById("all-cubes").innerHTML = element
     
     
-    for(var i=0; i<array.length; i++){
-        createCube(array[i], 2)
-    }
-}
+//     for(var i=0; i<array.length; i++){
+//         createCube(array[i], cubesNum)
+//     }
+// }
 
 function createTable(){
+    var inputBox = document.getElementById("cubeNum")
+    cubesNum = parseInt(inputBox.value)
+    
     var myTable = document.getElementById('all-cubes');
-    var count = 2
-    var array = shuffle(2**2)
+    var count = cubesNum
+    var array = shuffle(cubesNum**2)
     var num = 0
     for(var i=0;i<count;i++){
         var tr = document.createElement('tr');
@@ -72,8 +78,8 @@ function createTable(){
         }
     
     myTable.appendChild(tr);
-    }		
- 
+    }
+    getTableValues()
 }
 
 function boardArray(num){
@@ -196,23 +202,35 @@ function checkWinner(){
 }
 
 function isGameSolvable(){
+    var x = 0
     var count = 0
-    var j = 0
-    for(var i=0; i<myTableArray.length; i++){
-        var num = myTableArray[i][i]
-        if(num > myTableArray[i][j]){
-            count++
+    var y = 0
+     while(x < myTableArray.length && y < myTableArray.length){
+        if(myTableArray[x][y] !== ""){
+            var num = parseInt(myTableArray[x][y])
+            for(var i=x; i<myTableArray.length; i++){
+                for(var j=y; j<myTableArray.length; j++){
+                    var a = parseInt(myTableArray[i][j])
+                    if(num > a && myTableArray[i][j]!==""){
+                        count++
+                    }
+                }
+            }
+            
         }
-        if(j === 3){
-            j = j-3 
-        }else{
-           j++
+        y++
+        if(y == myTableArray.length && x < myTableArray.length){
+            x++
+            y = 0
         }
-        
-    }
-    if(count % 2 === 0){
+     }
+
+     if(count % 2 === 0){
+         console.log("solvable for 3")
         return true
     }else{
+        console.log("unsolvable for 3")
         return false
     }
+    
 }
