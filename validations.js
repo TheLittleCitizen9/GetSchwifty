@@ -65,8 +65,7 @@ function checkWinner(){
         const diffDays = diffTime / 36e5;
         user.gameLength = diffDays
         saveUsers()
-        localStorage.removeItem('schwifty')
-        localStorage.removeItem('name')
+        clearLocalStorage()
     }
     return isWinner
 }

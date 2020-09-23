@@ -6,6 +6,7 @@ function enterUser(){
     saveName(name)
     var newUser = new User(name, cubesNum, rank)
     users.push(newUser)
+    saveUsers()
 }
 
 function automaticWin(){
@@ -34,7 +35,6 @@ function automaticWin(){
 }
 
 function restartGame(){
-    localStorage.removeItem('schwifty')
-    localStorage.removeItem('name')
+    clearLocalStorage()
     window.location.reload()
 }

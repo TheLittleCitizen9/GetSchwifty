@@ -20,10 +20,19 @@ const getName = function(){
     }
 }
 
+const getTopUsers = function(){
+    const users = localStorage.getItem('topUsers')
+    if(users !== null){
+        return JSON.parse(users)
+    }else{
+        return []
+    }
+}
+
 const getUsers = function(){
-    const boardJSON = localStorage.getItem('users')
-    if(boardJSON !== null){
-        return JSON.parse(boardJSON)
+    const users = localStorage.getItem('users')
+    if(users !== null){
+        return JSON.parse(users)
     }else{
         return []
     }
@@ -31,7 +40,14 @@ const getUsers = function(){
 
 const saveUsers = function(){
     users.sort((a,b) => a.gameLength-b.gameLength)
-    localStorage.setItem('users', JSON.stringify(users.slice(0, 5)))
+    var topUsers = []
+    users.forEach(element => {
+        if(element.gameLength !== null){
+            topUsers.push(element)
+        }
+    });
+    localStorage.setItem('topUsers', JSON.stringify(topUsers.slice(0, 5)))
+    localStorage.setItem('users', JSON.stringify(users))
 }
 
 const saveName = function(name){
@@ -49,4 +65,10 @@ const getCubesNum = function(){
     }else{
         return 0
     }
+}
+
+const clearLocalStorage = function(){
+    localStorage.removeItem('schwifty')
+    localStorage.removeItem('name')
+    localStorage.removeItem('cubesNum')
 }

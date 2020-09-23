@@ -1,13 +1,15 @@
-window.onload = () => {
-    if(myTableArray.length > 0){
-        generateTable(myTableArray)
-        document.getElementById("winGame").disabled = false
-    }
-}
-
 var users = getUsers()
 var myTableArray = getBoardGame()
 var cubesNum = 0
+var topUsers = getTopUsers()
+
+window.onload = () => {
+    if(myTableArray.length > 0){
+        generateTable(myTableArray)
+        cubesNum = myTableArray.length
+        document.getElementById("winGame").disabled = false
+    }
+}
 
 function main(){
     createTable()
