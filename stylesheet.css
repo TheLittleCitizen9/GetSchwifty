@@ -1,0 +1,84 @@
+body{
+    font-family:"Calibri";
+}
+
+.btn{
+    background-color: rgb(144, 219, 144);
+    color: white;
+    text-shadow: 0 0 3px black;
+    font-weight: bolder;
+}
+
+.btn:hover{
+    background-color: cadetblue;
+}
+
+
+div {
+    display: block;
+}
+
+td{
+    display: table-cell;
+    vertical-align: inherit;
+}
+
+.search-container{
+    text-align: right;
+}
+
+input[type="text"], textarea {
+    background-color : rgb(188, 235, 188);
+    height: 50px;
+}
+
+.row{
+    align-items: center;
+}
+
+.num{
+   font-size: larger;
+}
+
+#all-cubes{
+    text-align: center;
+    font-size: xx-large;
+}
+
+table {
+    width: 100%;
+    border: 5px solid rgb(68, 201, 117);
+}
+
+tr {
+height: 50px;
+color: black;
+}
+
+td:hover{
+    color: lightblue;
+}
+
+tr, td {
+    border:5px solid rgb(4, 54, 22);
+    padding: 15px;
+    text-align: center;
+    background-color: white;
+    font-weight: bolder;
+    font-size: larger;
+}
+
+#win{
+    font-size: 150px;
+    text-align: left;
+    font-weight: bolder;
+    color: white;
+    text-shadow: 0 0 15px lightblue;
+}
+
+body{
+    background-image: url('rick-and-morty-walpaper-1.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
