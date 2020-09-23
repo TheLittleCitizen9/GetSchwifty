@@ -38,12 +38,10 @@ function cubePressed(element){
     generateTable(myTableArray)
     if(checkWinner()){
         document.getElementById("win").innerHTML = "You Won !!!"
-        //document.getElementById('all-cubes').innerHTML = ""
     }
 }
 
 function checkWinner(){
-    
     var lastNum = 0
     isWinner = false
     if(myTableArray[myTableArray.length-1][myTableArray.length-1] === ""){

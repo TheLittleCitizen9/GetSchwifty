@@ -1,6 +1,7 @@
 window.onload = () => {
     if(myTableArray.length > 0){
         generateTable(myTableArray)
+        document.getElementById("winGame").disabled = false
     }
 }
 
@@ -21,7 +22,7 @@ function main(){
 function createTable(){
     var inputBox = document.getElementById("cubeNum")
     cubesNum = parseInt(inputBox.value)
-
+    saveCubesNum()
     var myTable = document.getElementById('all-cubes');
     var count = cubesNum
     var array = shuffle(cubesNum**2)

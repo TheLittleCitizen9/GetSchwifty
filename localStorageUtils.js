@@ -37,3 +37,16 @@ const saveUsers = function(){
 const saveName = function(name){
     localStorage.setItem('name', JSON.stringify(name))
 }
+
+const saveCubesNum = function(){
+    localStorage.setItem('cubesNum', JSON.stringify(cubesNum))
+}
+
+const getCubesNum = function(){
+    const cubes = localStorage.getItem('cubesNum')
+    if(cubes !== null){
+        return JSON.parse(cubes)
+    }else{
+        return 0
+    }
+}

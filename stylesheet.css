@@ -1,3 +1,7 @@
+body{
+    font-family:"Calibri";
+}
+
 .btn{
     background-color: rgb(144, 219, 144);
     color: white;
@@ -29,7 +33,6 @@ input[type="text"], textarea {
 }
 
 .row{
-    text-align: center;
     align-items: center;
 }
 
@@ -44,7 +47,7 @@ input[type="text"], textarea {
 
 table {
     width: 100%;
-    border: 3px solid rgb(197, 125, 209)
+    border: 5px solid rgb(68, 201, 117);
 }
 
 tr {
@@ -52,12 +55,17 @@ height: 50px;
 color: black;
 }
 
+td:hover{
+    color: lightblue;
+}
+
 tr, td {
-    border:3px solid black;
+    border:5px solid rgb(4, 54, 22);
     padding: 15px;
     text-align: center;
     background-color: white;
     font-weight: bolder;
+    font-size: larger;
 }
 
 #win{
@@ -65,7 +73,7 @@ tr, td {
     text-align: left;
     font-weight: bolder;
     color: white;
-    text-shadow: 0 0 3px black;
+    text-shadow: 0 0 15px lightblue;
 }
 
 body{

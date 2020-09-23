@@ -6,7 +6,6 @@ function enterUser(){
     saveName(name)
     var newUser = new User(name, cubesNum, rank)
     users.push(newUser)
-    //saveUsers()
 }
 
 function automaticWin(){
